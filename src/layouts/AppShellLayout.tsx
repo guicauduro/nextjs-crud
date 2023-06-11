@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { AppShell, Navbar, Footer, useMantineTheme } from "@mantine/core";
+import { AppShell, Footer, useMantineTheme } from "@mantine/core";
 import HeaderComponent from "@/components/Header";
 import NavBarComponent from "@/components/Navbar";
 import MenuProvider from "@/contexts/MenuProvider";
@@ -32,6 +31,7 @@ export default function AppShellLayout({
           </Footer>
         }
         header={<HeaderComponent />}
+        padding={0}
       >
         {children}
       </AppShell>

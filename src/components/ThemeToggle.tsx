@@ -7,10 +7,10 @@ export default function ThemeToggle() {
 
   return (
     <ActionIcon
-      variant="outline"
-      color={dark ? "teal" : "gray"}
+      variant="filled"
+      color={dark ? "cyan" : "dark"}
       onClick={() => toggleColorScheme()}
-      title="Toggle color scheme"
+      title={dark ? "Light mode" : "Dark mode"}
     >
       {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
     </ActionIcon>

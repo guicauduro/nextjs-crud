@@ -1,32 +1,39 @@
 "use client";
 
 import useMenuContext from "@/hooks/useMenuContext";
-import { NavLink, Navbar } from "@mantine/core";
+import { NavLink, Navbar, ThemeIcon } from "@mantine/core";
 import { IconGauge, IconPlus, IconSearch } from "@tabler/icons-react";
+import Link from "next/link";
 import { useState } from "react";
 
-const data = [
-  { icon: IconGauge, label: "Dashboard" },
-  { icon: IconSearch, label: "Search" },
-  { icon: IconPlus, label: "Add" },
+const links = [
+  { icon: IconGauge, label: "Dashboard", link: "/" },
+  { icon: IconSearch, label: "Search", link: "/employees/search" },
+  { icon: IconPlus, label: "Register", link: "/employees/register" },
 ];
 
 export default function NavBarComponent() {
   const { opened } = useMenuContext();
   const [active, setActive] = useState(0);
 
-  const items = data.map((item, index) => (
+  const items = links.map((item, index) => (
     <NavLink
+      component={Link}
+      href={item.link}
       key={item.label}
       active={index === active}
       label={item.label}
-      icon={<item.icon size="1rem" stroke={1.5} />}
+      icon={
+        <ThemeIcon size="md" variant="light">
+          <item.icon size="1.2rem" />
+        </ThemeIcon>
+      }
       onClick={() => setActive(index)}
     />
   ));
   return (
     <Navbar
-      p="md"
+      p={0}
       hiddenBreakpoint="sm"
       hidden={!opened}
       width={{ sm: 200, lg: 300 }}
